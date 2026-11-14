@@ -8,3 +8,7 @@ def book_list(request):
 
 def book_detail(request, book_id):
     return HttpResponse(f"<h1>Book id {book_id}</h1>")
+
+
+def book_category(request, category_name):
+    return HttpResponse(f"<h1>Category: {category_name}</h1>")
