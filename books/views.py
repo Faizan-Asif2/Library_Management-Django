@@ -1,12 +1,70 @@
 
 from django.http import HttpResponse
+from django.shortcuts import render
 
+BOOKS = [
+    {
+        'id' : 1, 
+        'title' : 'clean code', 
+        'author' : 'Robert C. Martin',
+        'category' : 'programming',
+        'price' : 2450.5,
+        'copy' : 4
+    },
+    {
+        'id' : 2, 
+        'title' : 'the pragmatic programmer ', 
+        'author' : 'Andrew Hunt',
+        'category' : 'programming',
+        'price' : 2800,
+        'copy' : 0
+    },
+    {
+        'id' : 3, 
+        'title' : 'database system concepts', 
+        'author' : 'Abraham Silberschatz',
+        'category' : 'databases',
+        'price' : 3150.75,
+        'copy' : 2
+    },
+    {
+        'id' : 4, 
+        'title' : 'computer networking', 
+        'author' : ' James Kurose',
+        'category' : 'networks',
+        'price' : 2999,
+        'copy' : 1
+    },
+    {
+        'id' : 5, 
+        'title' : 'operating system concepts', 
+        'author' : 'Abraham Silberschatz',
+        'category' : 'systems',
+        'price' : 3300,
+        'copy' : 0
+    },
+    {
+        'id' : 6, 
+        'title' : 'two scoops of django', 
+        'author' : 'Daniel Greenfeld',
+        'category' : 'programming',
+        'price' : 1890.25,
+        'copy' : 3
+    },
+]
 
 def book_list(request):
-    return HttpResponse("""
-        <h1>Library Book Collection</h1>
-        <p>Welcome to our library! Explore our collection of books.</p>
-    """)
+
+    context = {
+        'books': BOOKS,
+        'page_title': 'Books',
+    }
+
+    return render(
+        request,
+        'books/book_list.html',
+        context
+    )
 
 
 def book_detail(request, book_id):
