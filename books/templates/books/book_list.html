@@ -2,10 +2,10 @@
 
 <h1>{{ page_title|title }}</h1>
 
-<table>
+<table  style="border: solid;">
 
-    <thead>
-        <tr>
+    <thead  style="border: solid;">
+        <tr  style="border: solid;">
             <th>#</th>
             <th>Title</th>
             <th>Author</th>
@@ -15,23 +15,29 @@
         </tr>
     </thead>
 
-    <tbody>
+    <tbody  style="border: solid;">
 
         {% for book in books %}
 
-        <tr>
+        <tr  style="border: solid;">
 
             <td>{{ forloop.counter }}</td>
 
-            <td>{{ book.tittle }}</td>
+            <td>{{ book.title|lower|title}}</td>
 
             <td>{{ book.author }}</td>
 
-            <td>{{ book.category }}</td>
+            <td>{{ book.category|upper }}</td>
 
             <td>{{ book.price|floatformat:2 }}</td>
 
-            <td>{{ book.copy }}</td>
+            <td>
+                {% if book.copy > 0 %}
+                    <p>Books Available</p>
+                {% else %}
+                    <p>Books out of Stock</p>
+                {% endif %}
+            </td>
 
         </tr>
 
@@ -39,7 +45,7 @@
 
         <tr>
             <td colspan="6">
-                No Members found!
+                No books in the library yet.
             </td>
         </tr>
 

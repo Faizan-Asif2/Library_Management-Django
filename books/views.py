@@ -57,7 +57,7 @@ def book_list(request):
 
     context = {
         'books': BOOKS,
-        'page_title': 'Books',
+       'page_title': 'Books',
     }
 
     return render(
