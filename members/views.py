@@ -7,25 +7,29 @@ MEMBERS = [
         'id': 1,
         'name': 'Hamza Tariq',
         'membership': 'student',
-        'book_issued': 1
+        'book_issued': 1,
+        'remark': ''
     },
     {
         'id': 2,
         'name': 'Fatima Noor',
         'membership': 'faculty',
-        'book_issued': 3
+        'book_issued': 3,
+        'remark': ''
     },
     {
         'id': 3,
         'name': 'Usman Ali',
         'membership': 'student',
-        'book_issued': 0
+        'book_issued': 0,
+        'remark': ''
     },
     {
         'id': 4,
         'name': 'Zainab Hussain',
         'membership': 'student',
-        'book_issued': 4
+        'book_issued': 4,
+        'remark': ''
     },
 ]
 

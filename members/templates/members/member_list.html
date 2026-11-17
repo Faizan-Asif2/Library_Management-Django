@@ -12,6 +12,7 @@
             <th>Name</th>
             <th>Membership</th>
             <th>Book Issued</th>
+            <th>Status</th>
         </tr>
     </thead>
 
@@ -28,6 +29,12 @@
             <td>{{ member.membership }}</td>
 
             <td>{{ member.book_issued }}</td>
+
+            {%if member.book_issued > 2 %}
+                <td>Limit Reached</td>
+            {%else%}
+                <td>Limit Not Reached</td>   
+            {%endif%}   
 
         </tr>
 
