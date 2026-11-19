@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ book.title|title }} — Library Management System{% endblock %}
+
+{% block content %}
+
+<h1>{{ book.title|title }}</h1>
+
+<table class="book-table detail-table">
+    <tr>
+        <th>Author</th>
+        <td>{{ book.author }}</td>
+    </tr>
+    <tr>
+        <th>Category</th>
+        <td>{{ book.category|upper }}</td>
+    </tr>
+    <tr>
+        <th>Price</th>
+        <td>Rs.{{ book.price|floatformat:2 }}</td>
+    </tr>
+    <tr>
+        <th>Copies Available</th>
+        <td>
+            {% if book.copy > 0 %}
+                Available ({{ book.copy }})
+            {% else %}
+                <span class="out-of-stock">Out of stock</span>
+            {% endif %}
+        </td>
+    </tr>
+</table>
+
+<br>
+<a href="{% url 'books:book_list' %}" class="btn">&larr; Back to Book List</a>
+
+{% endblock %}
