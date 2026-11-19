@@ -68,11 +68,21 @@ def book_list(request):
 
 
 def book_detail(request, book_id):
-    return HttpResponse(f"Book ID: {book_id}")
+    book = next((b for b in BOOKS if b['id'] == book_id), None)
+    if book is None:
+        from django.http import Http404
+        raise Http404("Book not found")
+    return render(request, 'books/book_detail.html', {'book': book})
 
 
 def books_by_category(request, category_name):
-    return HttpResponse(f"Books in category: {category_name}")
+    filtered = [b for b in BOOKS if b['category'] == category_name]
+    context = {
+        'books': filtered,
+        'page_title': f'Books in category: {category_name}',
+        'category_name': category_name,
+    }
+    return render(request, 'books/book_list.html', context)
 
 
 def book_issue(request, book_id, days):
