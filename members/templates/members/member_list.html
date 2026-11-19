@@ -1,18 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Members — Library Management System{% endblock %}
+
 {% block content %}
 
-<h1>{{ page_title|title }}</h1>
+<h1>Members ({{ members|length }})</h1>
 
-<p>Available Members: {{ members|length }}</p>
-
-<table>
+<table class="book-table">
 
     <thead>
         <tr>
-            <th>id</th>
+            <th>#</th>
             <th>Name</th>
             <th>Membership</th>
-            <th>Book Issued</th>
-            <th>Status</th>
+            <th>Books Issued</th>
+            <th>Remark</th>
         </tr>
     </thead>
 
@@ -26,24 +28,24 @@
 
             <td>{{ member.name }}</td>
 
-            <td>{{ member.membership }}</td>
+            <td>{{ member.membership|title }}</td>
 
             <td>{{ member.book_issued }}</td>
 
-            {%if member.book_issued > 2 %}
-                <td>Limit Reached</td>
-            {%else%}
-                <td>Limit Not Reached</td>   
-            {%endif%}   
+            <td>
+                {% if member.book_issued >= 3 %}
+                    Limit reached
+                {% elif member.book_issued == 0 %}
+                    No books issued
+                {% endif %}
+            </td>
 
         </tr>
 
         {% empty %}
 
         <tr>
-            <td colspan="6">
-                No Members found!
-            </td>
+            <td colspan="5">No Members found!</td>
         </tr>
 
         {% endfor %}
