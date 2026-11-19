@@ -1,18 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Library Management System{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'books/css/style.css' %}">
+</head>
 <body>
-
     {% include 'partials/navbar.html' %}
-
     <main class="container">
-
         {% block content %}
-            <p>Default parent content.</p>
+        <p>Default parent content.</p>
         {% endblock %}
-
     </main>
-
-    <footer>
-        <p>Libray Management System &copy; 2026</p>
+    <footer class="footer">
+        <p>&copy; 2026 Library Management System</p>
     </footer>
-
 </body>
 </html>

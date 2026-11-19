@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Home — Library Management System{% endblock %}
+
+{% block content %}
+<div class="home-hero">
+    <h1>Welcome to the Library Management System</h1>
+    <p>Browse our collection of books and manage member information.</p>
+    <div class="home-links">
+        <a href="{% url 'books:book_list' %}" class="btn">View Books</a>
+        <a href="{% url 'members:member_list' %}" class="btn">View Members</a>
+    </div>
+</div>
+{% endblock %}
