@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <!-- Book cover -->
+  <rect x="8" y="6" width="28" height="36" rx="3" ry="3" fill="#e8f4fd" stroke="#1a1a2e" stroke-width="2"/>
+  <!-- Spine -->
+  <rect x="8" y="6" width="6" height="36" rx="2" ry="2" fill="#1a1a2e"/>
+  <!-- Lines representing text -->
+  <line x1="18" y1="14" x2="32" y2="14" stroke="#aaa" stroke-width="2" stroke-linecap="round"/>
+  <line x1="18" y1="20" x2="32" y2="20" stroke="#aaa" stroke-width="2" stroke-linecap="round"/>
+  <line x1="18" y1="26" x2="32" y2="26" stroke="#aaa" stroke-width="2" stroke-linecap="round"/>
+  <line x1="18" y1="32" x2="28" y2="32" stroke="#aaa" stroke-width="2" stroke-linecap="round"/>
+</svg>
