@@ -1,41 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}Books — Library Management System{% endblock %}
+
 {% block content %}
 
-<h1>{{ page_title|title }}</h1>
+<h1>
+    {% if category_name %}
+        Books in category: {{ category_name|title }}
+    {% else %}
+        Books ({{ books|length }})
+    {% endif %}
+</h1>
 
-<table  style="border: solid;">
+<table class="book-table">
 
-    <thead  style="border: solid;">
-        <tr  style="border: solid;">
+    <thead>
+        <tr>
             <th>#</th>
             <th>Title</th>
             <th>Author</th>
             <th>Category</th>
             <th>Price</th>
-            <th>Copies</th>
+            <th>Status</th>
         </tr>
     </thead>
 
-    <tbody  style="border: solid;">
+    <tbody>
 
         {% for book in books %}
 
-        <tr  style="border: solid;">
+        <tr>
 
             <td>{{ forloop.counter }}</td>
 
-            <td>{{ book.title|lower|title}}</td>
+            <td>
+                <a href="{% url 'books:book_detail' book.id %}">{{ book.title|title }}</a>
+            </td>
 
             <td>{{ book.author }}</td>
 
-            <td>{{ book.category|upper }}</td>
+            <td>
+                <a href="{% url 'books:books_by_category' book.category %}">
+                    {{ book.category|upper }}
+                </a>
+            </td>
 
-            <td>{{ book.price|floatformat:2 }}</td>
+            <td>Rs.{{ book.price|floatformat:2 }}</td>
 
             <td>
                 {% if book.copy > 0 %}
-                    <p>Books Available</p>
+                    Available ({{ book.copy }})
                 {% else %}
-                    <p>Books out of Stock</p>
+                    <span class="out-of-stock">Out of stock</span>
                 {% endif %}
             </td>
 
@@ -44,9 +60,7 @@
         {% empty %}
 
         <tr>
-            <td colspan="6">
-                No books in the library yet.
-            </td>
+            <td colspan="6">No books in the library yet.</td>
         </tr>
 
         {% endfor %}
